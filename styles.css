@@ -31,3 +31,24 @@ svg {
 body {
   font-family: "Red Hat Text", sans-serif;
 }
+
+main {
+  display: grid;
+  grid-template-areas:
+    "title title title cart-display"
+    "desserts-grid desserts-grid desserts-grid cart-display";
+}
+
+h1 {
+  grid-area: title;
+}
+
+.desserts-grid {
+  grid-area: desserts-grid;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cart-display {
+  grid-area: cart-display;
+}
