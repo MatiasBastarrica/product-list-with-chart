@@ -23,5 +23,11 @@
 img,
 svg {
   display: block;
-  width: 100%;
+  max-width: 100%;
+}
+
+/* ### GENERAL STYLING ### */
+
+body {
+  font-family: "Red Hat Text", sans-serif;
 }
