@@ -63,6 +63,16 @@ function populateDom(elements) {
     price.textContent = `$${element.price}`;
     dessertBody.appendChild(price);
 
+    const cart = document.createElement("button");
+    cart.classList.add("cart-btn-container");
+    const cartSvg = document.createElement("img");
+    cartSvg.src = "./assets/images/icon-add-to-cart.svg";
+    cart.appendChild(cartSvg);
+    const cartBtnText = document.createElement("span");
+    cartBtnText.textContent = "Add to Cart";
+    cart.appendChild(cartBtnText);
+    dessertBody.appendChild(cart);
+
     dessertsGrid.appendChild(dessertContainer);
   });
 }
