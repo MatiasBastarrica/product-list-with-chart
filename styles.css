@@ -31,35 +31,41 @@ svg {
 body {
   font-family: "Red Hat Text", sans-serif;
   background-color: var(--rose-100);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
-  display: grid;
-  grid-template-areas:
-    "title title title cart-display"
-    "desserts-grid desserts-grid desserts-grid cart-display"
-    "desserts-grid desserts-grid desserts-grid ..";
+  position: relative;
+  max-width: 90%;
 }
 
 h1 {
-  grid-area: title;
   color: var(--rose-900);
-}
-
-.desserts-grid {
-  grid-area: desserts-grid;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.cart-display {
-  grid-area: cart-display;
 }
 
 /* ### DESSERTS GRID ### */
 
+.desserts-grid {
+  max-width: 60%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.dessert {
+  max-width: 300;
+}
+
+/* .dessert picture {
+  max-width: 300px;
+} */
+
 .dessert img {
   border-radius: 0.6rem;
+  /* max-width: 300px; */
 }
 
 .dessert-body {
@@ -101,8 +107,12 @@ h1 {
 /* ### CART DISPLAY ### */
 
 .cart-display {
+  width: 35%;
   background-color: var(--rose-50);
   border-radius: 0.6rem;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .cart-display__title {
