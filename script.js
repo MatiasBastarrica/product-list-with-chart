@@ -60,7 +60,7 @@ function populateDom(elements) {
 
     const price = document.createElement("p");
     price.classList.add("dessert-price");
-    price.textContent = `$${element.price}`;
+    price.textContent = `$${element.price.toFixed(2)}`;
     dessertBody.appendChild(price);
 
     const cart = document.createElement("button");
