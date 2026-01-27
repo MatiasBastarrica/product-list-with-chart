@@ -64,6 +64,7 @@ h1 {
 
 .dessert-body {
   position: relative;
+  padding-top: 2rem;
 }
 
 .dessert-category {
@@ -82,9 +83,10 @@ h1 {
 
 .dessert button {
   position: absolute;
-  top: -50%;
+  top: -25%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translateX(-50%);
+  /* transform: translate(25%, 50%); */
   background-color: var(--rose-50);
   display: flex;
   gap: 0.5rem;
