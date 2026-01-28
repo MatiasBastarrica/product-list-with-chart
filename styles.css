@@ -112,7 +112,7 @@ h1 {
   align-items: center;
   border-radius: 200px;
   padding: 0.5rem 1.325rem;
-  border: 2px solid var(--rose-500);
+  border: 1px solid var(--rose-500);
   cursor: pointer;
   width: max-content;
   font-weight: 600;
