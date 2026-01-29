@@ -112,16 +112,20 @@ h1 {
   transform: translateX(-50%);
   /* transform: translate(25%, 50%); */
   background-color: var(--rose-50);
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
+
   border-radius: 200px;
   padding: 0.5rem 1.325rem;
   border: 1px solid var(--rose-500);
   cursor: pointer;
-  width: max-content;
+  min-width: 70%;
   font-weight: 600;
+}
+
+.cart-state-0 {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ### CART DISPLAY ### */

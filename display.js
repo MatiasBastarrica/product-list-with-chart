@@ -58,12 +58,19 @@ export const displayController = (function displayController() {
       const cart = document.createElement("button");
       cart.classList.add("cart-btn-container");
       cart.setAttribute("data-dessert-index", `${index}`);
+
+      const cartStateZero = document.createElement("div");
+      cartStateZero.classList.add("cart-state-0");
+      cart.appendChild(cartStateZero);
+
       const cartSvg = document.createElement("img");
       cartSvg.src = "./assets/images/icon-add-to-cart.svg";
-      cart.appendChild(cartSvg);
+      cartStateZero.appendChild(cartSvg);
+
       const cartBtnText = document.createElement("span");
       cartBtnText.textContent = "Add to Cart";
-      cart.appendChild(cartBtnText);
+      cartStateZero.appendChild(cartBtnText);
+
       cart.addEventListener("click", function (e) {
         let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
       });
