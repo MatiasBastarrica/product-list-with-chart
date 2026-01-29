@@ -1,5 +1,7 @@
 export const displayController = (function displayController() {
   const dessertsGrid = document.querySelector(".desserts-grid");
+  const empyCart = document.querySelector(".empty-cart");
+  const cartList = document.querySelector(".cart-list");
 
   function populateDessertsGrid(elements) {
     const breakpoints = {
@@ -69,6 +71,30 @@ export const displayController = (function displayController() {
 
       dessertsGrid.appendChild(dessertContainer);
     });
+  }
+
+  function populateCartDisplay(elements, index) {
+    if (empyCart.classList.contains("hidden")) {
+      empyCart.classList.add("hidden");
+    }
+
+    const cartItem = document.createElement("li");
+    cartItem.classList.add("cart-item");
+
+    const cartItemBody = document.createElement("div");
+    cartItemBody.classList.add("cart-item-body");
+
+    const itemTitle = document.createElement("h3");
+    itemTitle.textContent = `${elements[index].name}`;
+    itemTitle.classList.add("cart-item__title");
+    cartItemBody.appendChild(itemTitle);
+
+    const cartItemNumbers = document.createElement("div");
+    cartItemNumbers.classList.add("cart-item-numbers");
+
+    const itemQauntity = document.createElement("span");
+    itemQauntity.classList.add("cart-item-numbers");
+    // itemQauntity.textContent = `${}`;
   }
 
   return {

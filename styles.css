@@ -26,6 +26,12 @@ svg {
   max-width: 100%;
 }
 
+/* ### UTILITIES ### */
+
+.hidden {
+  display: none;
+}
+
 /* ### GENERAL STYLING ### */
 
 body {
