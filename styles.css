@@ -138,6 +138,13 @@ h1 {
   color: var(--rose-50);
 }
 
+.cart-state-1 img {
+  height: 18px;
+  width: 18px;
+  border: 1px solid var(--rose-50);
+  padding: 0.2rem;
+}
+
 /* ### CART DISPLAY ### */
 
 .cart-display {

@@ -85,7 +85,15 @@ export const displayController = (function displayController() {
 
       const incrementIcon = document.createElement("img");
       incrementIcon.src = "./assets/images/icon-increment-quantity.svg";
+      incrementIcon.setAttribute("data-dessert-index", `${index}`);
       cartStateOneWrapper.appendChild(incrementIcon);
+
+      incrementIcon.addEventListener("click", function (e) {
+        e.stopPropagation();
+        let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
+        DessertsInfo.increaseQauntity(dessertIndexClicked);
+        quantityNumber.textContent = `${DessertsInfo.getQauntity(dessertIndexClicked)}`;
+      });
 
       const quantityNumber = document.createElement("span");
       quantityNumber.classList.add("quantity-number");
@@ -93,7 +101,15 @@ export const displayController = (function displayController() {
 
       const decrementIcon = document.createElement("img");
       decrementIcon.src = "./assets/images/icon-decrement-quantity.svg";
+      decrementIcon.setAttribute("data-dessert-index", `${index}`);
       cartStateOneWrapper.appendChild(decrementIcon);
+
+      decrementIcon.addEventListener("click", function (e) {
+        e.stopPropagation();
+        let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
+        DessertsInfo.decreaseQauntity(dessertIndexClicked);
+        quantityNumber.textContent = `${DessertsInfo.getQauntity(dessertIndexClicked)}`;
+      });
 
       cart.addEventListener("click", function (e) {
         cartStateZero.classList.add("hidden");

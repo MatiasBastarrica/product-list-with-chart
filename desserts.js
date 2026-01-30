@@ -14,7 +14,7 @@ export const DessertsInfo = (function () {
   }
 
   function decreaseQauntity(dessertIndex) {
-    if (desserts[dessertIndex] > 0) {
+    if (desserts[dessertIndex].quantity > 0) {
       desserts[dessertIndex].quantity -= 1;
     }
   }
