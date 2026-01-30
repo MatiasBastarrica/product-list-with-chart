@@ -1,3 +1,5 @@
+import { DessertsInfo } from "./desserts.js";
+
 export const displayController = (function displayController() {
   const dessertsGrid = document.querySelector(".desserts-grid");
   const empyCart = document.querySelector(".empty-cart");
@@ -62,17 +64,46 @@ export const displayController = (function displayController() {
       const cartStateZero = document.createElement("div");
       cartStateZero.classList.add("cart-state-0");
       cart.appendChild(cartStateZero);
+      const cartStateZeroWrapper = document.createElement("div");
+      cartStateZeroWrapper.classList.add("wrapper");
+      cartStateZero.appendChild(cartStateZeroWrapper);
 
       const cartSvg = document.createElement("img");
       cartSvg.src = "./assets/images/icon-add-to-cart.svg";
-      cartStateZero.appendChild(cartSvg);
+      cartStateZeroWrapper.appendChild(cartSvg);
 
       const cartBtnText = document.createElement("span");
       cartBtnText.textContent = "Add to Cart";
-      cartStateZero.appendChild(cartBtnText);
+      cartStateZeroWrapper.appendChild(cartBtnText);
+
+      const cartStateOne = document.createElement("div");
+      cartStateOne.classList.add("cart-state-1", "hidden");
+      cart.appendChild(cartStateOne);
+      const cartStateOneWrapper = document.createElement("div");
+      cartStateOneWrapper.classList.add("wrapper");
+      cartStateOne.appendChild(cartStateOneWrapper);
+
+      const incrementIcon = document.createElement("img");
+      incrementIcon.src = "./assets/images/icon-increment-quantity.svg";
+      cartStateOneWrapper.appendChild(incrementIcon);
+
+      const quantityNumber = document.createElement("span");
+      quantityNumber.classList.add("quantity-number");
+      cartStateOneWrapper.appendChild(quantityNumber);
+
+      const decrementIcon = document.createElement("img");
+      decrementIcon.src = "./assets/images/icon-decrement-quantity.svg";
+      cartStateOneWrapper.appendChild(decrementIcon);
 
       cart.addEventListener("click", function (e) {
+        cartStateZero.classList.add("hidden");
+        cartStateOne.classList.remove("hidden");
+
         let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
+
+        DessertsInfo.setQauntity(dessertIndexClicked, 1);
+        quantityNumber.textContent =
+          DessertsInfo.getQauntity(dessertIndexClicked);
       });
       dessertBody.appendChild(cart);
 

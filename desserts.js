@@ -19,6 +19,10 @@ export const DessertsInfo = (function () {
     }
   }
 
+  function getQauntity(dessertIndex) {
+    return desserts[dessertIndex].quantity;
+  }
+
   function printDesserts() {
     console.log(desserts);
   }
@@ -29,5 +33,6 @@ export const DessertsInfo = (function () {
     setQauntity,
     increaseQauntity,
     decreaseQauntity,
+    getQauntity,
   };
 })();
