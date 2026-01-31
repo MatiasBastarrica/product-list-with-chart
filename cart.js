@@ -2,7 +2,7 @@ import { DessertsInfo } from "./desserts.js";
 export const Cart = (function () {
   const cartItems = [];
 
-  function addItem(name, quantity, totalPrice, dessertIndex, price) {
+  function addItem(name, quantity, totalPrice) {
     cartItems.push({
       name,
       quantity,
