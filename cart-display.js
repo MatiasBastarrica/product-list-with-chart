@@ -57,10 +57,6 @@ export const CartDisplay = (function () {
   }
 
   function updateCarItem(quantity, currentItem, price) {
-    // let currentQauntity = DessertsInfo.getQauntity(dessertIndex);
-    // quantity.textContent = `${currentQauntity}x`;
-    // totalPrice.textContent = `\$${(currentQuantity * price).toFixed(2)}`;
-
     currentItem.quantity.textContent = `${quantity}x`;
 
     currentItem.totalPrice.textContent = `\$${(quantity * price).toFixed(2)}`;
