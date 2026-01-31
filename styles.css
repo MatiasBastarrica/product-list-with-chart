@@ -171,3 +171,49 @@ h1 {
 .empty-cart-img {
   margin-inline: auto;
 }
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-list {
+  margin-top: 1.325rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-item__title {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.cart-item-numbers {
+  margin-top: 0.325rem;
+}
+
+.cart-item-quantity {
+  color: var(--red);
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+.cart-item-price {
+  color: var(--rose-400);
+  margin-right: 0.6rem;
+  font-weight: 500;
+}
+
+.cart-total-price {
+  color: var(--rose-500);
+  font-weight: 600;
+}
+
+.cart-item img {
+  box-sizing: border-box;
+  border: 2px solid var(--rose-400);
+  border-radius: 100%;
+  padding: 0.2rem;
+}
