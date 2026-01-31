@@ -1,10 +1,10 @@
 // import { jsx } from "react/jsx-runtime";
 import { DessertsInfo } from "./desserts.js";
+import { CartDisplay } from "./cart-display.js";
+import { Cart } from "./cart.js";
 
 export const displayController = (function displayController() {
   const dessertsGrid = document.querySelector(".desserts-grid");
-  const empyCart = document.querySelector(".empty-cart");
-  const cartList = document.querySelector(".cart-list");
 
   function populateDessertsGrid(elements) {
     const breakpoints = {
@@ -93,7 +93,13 @@ export const displayController = (function displayController() {
         e.stopPropagation();
         let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
         DessertsInfo.increaseQauntity(dessertIndexClicked);
-        quantityNumber.textContent = `${DessertsInfo.getQauntity(dessertIndexClicked)}`;
+        let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
+        quantityNumber.textContent = `${quantity}`;
+        CartDisplay.updateCarItem(
+          quantity,
+          Cart.getItem(element.name),
+          element.price.toFixed(2),
+        );
       });
 
       const quantityNumber = document.createElement("span");
@@ -119,57 +125,14 @@ export const displayController = (function displayController() {
         let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
 
         DessertsInfo.setQauntity(dessertIndexClicked, 1);
-        quantityNumber.textContent =
-          DessertsInfo.getQauntity(dessertIndexClicked);
-        populateCartDisplay(element, index);
+        let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
+        quantityNumber.textContent = quantity;
+        CartDisplay.populateCartItem(element, index);
       });
       dessertBody.appendChild(cart);
 
       dessertsGrid.appendChild(dessertContainer);
     });
-  }
-
-  function populateCartDisplay(element, index) {
-    if (!empyCart.classList.contains("hidden")) {
-      empyCart.classList.add("hidden");
-    }
-
-    const cartItem = document.createElement("li");
-    cartItem.classList.add("cart-item");
-
-    const cartItemBody = document.createElement("div");
-    cartItemBody.classList.add("cart-item-body");
-    cartItem.appendChild(cartItemBody);
-
-    const itemTitle = document.createElement("h3");
-    itemTitle.textContent = `${element.name}`;
-    itemTitle.classList.add("cart-item__title");
-    cartItemBody.appendChild(itemTitle);
-
-    const cartItemNumbers = document.createElement("div");
-    cartItemNumbers.classList.add("cart-item-numbers");
-    cartItemBody.appendChild(cartItemNumbers);
-
-    const itemQauntity = document.createElement("span");
-    itemQauntity.classList.add("cart-item-quantity");
-    itemQauntity.textContent = `${DessertsInfo.getQauntity(index)}x`;
-    cartItemNumbers.appendChild(itemQauntity);
-
-    const itemPrice = document.createElement("span");
-    itemPrice.classList.add("cart-item-price");
-    itemPrice.textContent = `@ \$${element.price.toFixed(2)}`;
-    cartItemNumbers.appendChild(itemPrice);
-
-    const itemTotalPrice = document.createElement("span");
-    itemTotalPrice.classList.add("cart-total-price");
-    itemTotalPrice.textContent = `\$${(element.price * DessertsInfo.getQauntity(index)).toFixed(2)}`;
-    cartItemNumbers.appendChild(itemTotalPrice);
-
-    const removeIcon = document.createElement("img");
-    removeIcon.src = "./assets/images/icon-remove-item.svg";
-    cartItem.appendChild(removeIcon);
-
-    cartList.appendChild(cartItem);
   }
 
   return {
