@@ -3,7 +3,7 @@ import { DessertsInfo } from "./desserts.js";
 import { CartDisplay } from "./cart-display.js";
 import { Cart } from "./cart.js";
 
-export const displayController = (function displayController() {
+export const DessertsDisplay = (function () {
   const dessertsGrid = document.querySelector(".desserts-grid");
 
   function populateDessertsGrid(elements) {

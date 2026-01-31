@@ -1,4 +1,4 @@
-import { displayController } from "./display.js";
+import { DessertsDisplay } from "./desserts-display.js";
 import { DessertsInfo } from "./desserts.js";
 
 fetch("./data.json")
@@ -6,7 +6,7 @@ fetch("./data.json")
     return response.json();
   })
   .then((data) => {
-    displayController.populateDessertsGrid(data);
+    DessertsDisplay.populateDessertsGrid(data);
     DessertsInfo.saveDesserts(data);
     // DessertsInfo.printDesserts();
   });
