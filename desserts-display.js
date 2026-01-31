@@ -125,15 +125,17 @@ export const DessertsDisplay = (function () {
       });
 
       cart.addEventListener("click", function (e) {
-        cartStateZero.classList.add("hidden");
-        cartStateOne.classList.remove("hidden");
+        if (Cart.getItem(element.name) === undefined) {
+          cartStateZero.classList.add("hidden");
+          cartStateOne.classList.remove("hidden");
 
-        let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
+          let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
 
-        DessertsInfo.setQauntity(dessertIndexClicked, 1);
-        let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
-        quantityNumber.textContent = quantity;
-        CartDisplay.populateCartItem(element, index);
+          DessertsInfo.setQauntity(dessertIndexClicked, 1);
+          let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
+          quantityNumber.textContent = quantity;
+          CartDisplay.populateCartItem(element, index);
+        }
       });
       dessertBody.appendChild(cart);
 
