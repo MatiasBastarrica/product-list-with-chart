@@ -115,7 +115,13 @@ export const displayController = (function displayController() {
         e.stopPropagation();
         let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
         DessertsInfo.decreaseQauntity(dessertIndexClicked);
-        quantityNumber.textContent = `${DessertsInfo.getQauntity(dessertIndexClicked)}`;
+        let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
+        quantityNumber.textContent = `${quantity}`;
+        CartDisplay.updateCarItem(
+          quantity,
+          Cart.getItem(element.name),
+          element.price.toFixed(2),
+        );
       });
 
       cart.addEventListener("click", function (e) {
