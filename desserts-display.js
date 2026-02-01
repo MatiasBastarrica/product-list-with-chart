@@ -134,6 +134,7 @@ export const DessertsDisplay = (function () {
           DessertsInfo.setQauntity(dessertIndexClicked, 1);
           let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
           quantityNumber.textContent = quantity;
+          DessertsInfo.saveDessertBtns(index, cartStateZero, cartStateOne);
           CartDisplay.populateCartItem(element, index);
         }
       });
@@ -143,7 +144,13 @@ export const DessertsDisplay = (function () {
     });
   }
 
+  function resetBtnState(btnStateZero, btnStateOne) {
+    btnStateZero.classList.remove("hidden");
+    btnStateOne.classList.add("hidden");
+  }
+
   return {
     populateDessertsGrid,
+    resetBtnState,
   };
 })();

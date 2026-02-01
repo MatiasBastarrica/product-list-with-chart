@@ -27,6 +27,15 @@ export const DessertsInfo = (function () {
     console.log(desserts);
   }
 
+  function saveDessertBtns(dessertIndex, btnZero, btnOne) {
+    desserts[dessertIndex].btnStateZero = btnZero;
+    desserts[dessertIndex].btnStateOne = btnOne;
+  }
+
+  function getDessertBtn(dessertBtn, dessertIndex) {
+    return desserts[dessertIndex][dessertBtn];
+  }
+
   return {
     saveDesserts,
     printDesserts,
@@ -34,5 +43,7 @@ export const DessertsInfo = (function () {
     increaseQauntity,
     decreaseQauntity,
     getQauntity,
+    saveDessertBtns,
+    getDessertBtn,
   };
 })();

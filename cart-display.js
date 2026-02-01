@@ -1,5 +1,6 @@
 import { DessertsInfo } from "./desserts.js";
 import { Cart } from "./cart.js";
+import { DessertsDisplay } from "./desserts-display.js";
 
 export const CartDisplay = (function () {
   const empyCart = document.querySelector(".empty-cart");
@@ -44,22 +45,29 @@ export const CartDisplay = (function () {
     const removeIcon = document.createElement("img");
     removeIcon.src = "./assets/images/icon-remove-item.svg";
     cartItem.appendChild(removeIcon);
+    removeIcon.addEventListener("click", function (e) {
+      removeCartItem(element.name);
+      DessertsDisplay.resetBtnState(
+        DessertsInfo.getDessertBtn("btnStateZero", index),
+        DessertsInfo.getDessertBtn("btnStateOne", index),
+      );
+    });
 
     cartList.appendChild(cartItem);
 
-    Cart.addItem(
-      element.name,
-      itemQauntity,
-      itemTotalPrice,
-      index,
-      element.price,
-    );
+    Cart.addItem(element.name, itemQauntity, itemTotalPrice, cartItem);
   }
 
   function updateCarItem(quantity, currentItem, price) {
     currentItem.quantity.textContent = `${quantity}x`;
 
     currentItem.totalPrice.textContent = `\$${(quantity * price).toFixed(2)}`;
+  }
+
+  function removeCartItem(name) {
+    cartList.removeChild(Cart.getItem(name).cartItem);
+
+    Cart.removeItem(name);
   }
 
   return {
