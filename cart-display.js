@@ -6,12 +6,13 @@ export const CartDisplay = (function () {
   const cartTotal = document.querySelector(".cart-total");
   const cartTotalNum = document.querySelector(".cart-total-num");
   const empyCart = document.querySelector(".empty-cart");
+  const fullCart = document.querySelector(".full-cart");
   const cartList = document.querySelector(".cart-list");
 
   function populateCartItem(element, index) {
-    if (!empyCart.classList.contains("hidden")) {
-      empyCart.classList.add("hidden");
-    }
+    // if (!empyCart.classList.contains("hidden")) {
+    //   empyCart.classList.add("hidden");
+    // }
 
     const cartItem = document.createElement("li");
     cartItem.classList.add("cart-item");
@@ -55,7 +56,8 @@ export const CartDisplay = (function () {
         DessertsInfo.getDessertBtn("btnStateOne", index),
       );
       updateTotal();
-      toggleTotal();
+      Cart.checkEmptyCart();
+      // toggleTotal();
     });
 
     cartList.appendChild(cartItem);
@@ -81,8 +83,12 @@ export const CartDisplay = (function () {
     Cart.removeItem(name);
   }
 
-  function toggleTotal() {
-    cartTotal.classList.toggle("hidden");
+  function toggleFullCart() {
+    fullCart.classList.toggle("hidden");
+  }
+
+  function toggleEmptyCart() {
+    empyCart.classList.toggle("hidden");
   }
 
   return {
@@ -90,6 +96,7 @@ export const CartDisplay = (function () {
     updateCarItem,
     removeCartItem,
     updateTotal,
-    toggleTotal,
+    toggleFullCart,
+    toggleEmptyCart,
   };
 })();

@@ -117,9 +117,10 @@ export const DessertsDisplay = (function () {
         let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
         if (DessertsInfo.getQauntity(dessertIndexClicked) === 1) {
           CartDisplay.removeCartItem(element.name);
-          Cart.removeItem(element.name);
+          // Cart.removeItem(element.name);
           resetBtnState(cartStateZero, cartStateOne);
-          CartDisplay.toggleTotal();
+          Cart.checkEmptyCart();
+          // CartDisplay.toggleTotal();
         } else {
           DessertsInfo.decreaseQauntity(dessertIndexClicked);
           let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
@@ -135,6 +136,7 @@ export const DessertsDisplay = (function () {
 
       cart.addEventListener("click", function (e) {
         if (Cart.getItem(element.name) === undefined) {
+          Cart.checkEmptyCart();
           cartStateZero.classList.add("hidden");
           cartStateOne.classList.remove("hidden");
 
@@ -146,7 +148,7 @@ export const DessertsDisplay = (function () {
           DessertsInfo.saveDessertBtns(index, cartStateZero, cartStateOne);
           CartDisplay.populateCartItem(element, index);
           CartDisplay.updateTotal();
-          CartDisplay.toggleTotal();
+          // CartDisplay.toggleTotal();
         }
       });
       dessertBody.appendChild(cart);

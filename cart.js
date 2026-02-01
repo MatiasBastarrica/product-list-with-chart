@@ -1,4 +1,5 @@
 import { DessertsInfo } from "./desserts.js";
+import { CartDisplay } from "./cart-display.js";
 export const Cart = (function () {
   const cartItems = [];
 
@@ -38,11 +39,19 @@ export const Cart = (function () {
     getItem(name).total = newTotal;
   }
 
+  function checkEmptyCart() {
+    if (cartItems.length === 0) {
+      CartDisplay.toggleEmptyCart();
+      CartDisplay.toggleFullCart();
+    }
+  }
+
   return {
     addItem,
     getItem,
     removeItem,
     getTotal,
     updateTotal,
+    checkEmptyCart,
   };
 })();
