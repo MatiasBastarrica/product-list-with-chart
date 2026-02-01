@@ -114,14 +114,20 @@ export const DessertsDisplay = (function () {
       decrementIcon.addEventListener("click", function (e) {
         e.stopPropagation();
         let dessertIndexClicked = e.currentTarget.dataset.dessertIndex;
-        DessertsInfo.decreaseQauntity(dessertIndexClicked);
-        let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
-        quantityNumber.textContent = `${quantity}`;
-        CartDisplay.updateCarItem(
-          quantity,
-          Cart.getItem(element.name),
-          element.price.toFixed(2),
-        );
+        if (DessertsInfo.getQauntity(dessertIndexClicked) === 1) {
+          CartDisplay.removeCartItem(element.name);
+          Cart.removeItem(element.name);
+          resetBtnState(cartStateZero, cartStateOne);
+        } else {
+          DessertsInfo.decreaseQauntity(dessertIndexClicked);
+          let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
+          quantityNumber.textContent = `${quantity}`;
+          CartDisplay.updateCarItem(
+            quantity,
+            Cart.getItem(element.name),
+            element.price.toFixed(2),
+          );
+        }
       });
 
       cart.addEventListener("click", function (e) {

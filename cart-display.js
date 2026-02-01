@@ -73,5 +73,6 @@ export const CartDisplay = (function () {
   return {
     populateCartItem,
     updateCarItem,
+    removeCartItem,
   };
 })();
