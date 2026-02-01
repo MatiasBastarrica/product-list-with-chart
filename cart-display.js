@@ -3,6 +3,8 @@ import { Cart } from "./cart.js";
 import { DessertsDisplay } from "./desserts-display.js";
 
 export const CartDisplay = (function () {
+  const cartTotal = document.querySelector(".cart-total");
+  const cartTotalNum = document.querySelector(".cart-total-num");
   const empyCart = document.querySelector(".empty-cart");
   const cartList = document.querySelector(".cart-list");
 
@@ -39,7 +41,8 @@ export const CartDisplay = (function () {
 
     const itemTotalPrice = document.createElement("span");
     itemTotalPrice.classList.add("cart-total-price");
-    itemTotalPrice.textContent = `\$${(element.price * DessertsInfo.getQauntity(index)).toFixed(2)}`;
+    let total = (element.price * DessertsInfo.getQauntity(index)).toFixed(2);
+    itemTotalPrice.textContent = `\$${total}`;
     cartItemNumbers.appendChild(itemTotalPrice);
 
     const removeIcon = document.createElement("img");
@@ -51,17 +54,25 @@ export const CartDisplay = (function () {
         DessertsInfo.getDessertBtn("btnStateZero", index),
         DessertsInfo.getDessertBtn("btnStateOne", index),
       );
+      updateTotal();
+      toggleTotal();
     });
 
     cartList.appendChild(cartItem);
 
-    Cart.addItem(element.name, itemQauntity, itemTotalPrice, cartItem);
+    Cart.addItem(element.name, itemQauntity, itemTotalPrice, cartItem, total);
+  }
+
+  function updateTotal() {
+    cartTotalNum.textContent = `\$${Cart.getTotal()}`;
   }
 
   function updateCarItem(quantity, currentItem, price) {
     currentItem.quantity.textContent = `${quantity}x`;
 
-    currentItem.totalPrice.textContent = `\$${(quantity * price).toFixed(2)}`;
+    let total = (quantity * price).toFixed(2);
+    currentItem.totalPrice.textContent = `\$${total}`;
+    Cart.updateTotal(currentItem.name, total);
   }
 
   function removeCartItem(name) {
@@ -70,9 +81,15 @@ export const CartDisplay = (function () {
     Cart.removeItem(name);
   }
 
+  function toggleTotal() {
+    cartTotal.classList.toggle("hidden");
+  }
+
   return {
     populateCartItem,
     updateCarItem,
     removeCartItem,
+    updateTotal,
+    toggleTotal,
   };
 })();

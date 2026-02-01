@@ -217,3 +217,22 @@ h1 {
   border-radius: 100%;
   padding: 0.2rem;
 }
+
+.cart-total-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-block-start: 1px solid var(--rose-100);
+}
+
+.cart-total-text {
+  color: var(--rose-500);
+}
+
+.cart-total-num {
+  font-size: 1.5rem;
+  font: 600;
+  color: var(--rose-900);
+}

@@ -100,6 +100,7 @@ export const DessertsDisplay = (function () {
           Cart.getItem(element.name),
           element.price.toFixed(2),
         );
+        CartDisplay.updateTotal();
       });
 
       const quantityNumber = document.createElement("span");
@@ -118,6 +119,7 @@ export const DessertsDisplay = (function () {
           CartDisplay.removeCartItem(element.name);
           Cart.removeItem(element.name);
           resetBtnState(cartStateZero, cartStateOne);
+          CartDisplay.toggleTotal();
         } else {
           DessertsInfo.decreaseQauntity(dessertIndexClicked);
           let quantity = DessertsInfo.getQauntity(dessertIndexClicked);
@@ -127,6 +129,7 @@ export const DessertsDisplay = (function () {
             Cart.getItem(element.name),
             element.price.toFixed(2),
           );
+          CartDisplay.updateTotal();
         }
       });
 
@@ -142,6 +145,8 @@ export const DessertsDisplay = (function () {
           quantityNumber.textContent = quantity;
           DessertsInfo.saveDessertBtns(index, cartStateZero, cartStateOne);
           CartDisplay.populateCartItem(element, index);
+          CartDisplay.updateTotal();
+          CartDisplay.toggleTotal();
         }
       });
       dessertBody.appendChild(cart);
