@@ -8,6 +8,7 @@ export const CartDisplay = (function () {
   const empyCart = document.querySelector(".empty-cart");
   const fullCart = document.querySelector(".full-cart");
   const cartList = document.querySelector(".cart-list");
+  const cartConfirmBtn = document.querySelector(".confirm-order-btn");
 
   function populateCartItem(element, index) {
     // if (!empyCart.classList.contains("hidden")) {
