@@ -236,3 +236,14 @@ h1 {
   font: 600;
   color: var(--rose-900);
 }
+
+.delivery-info {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--rose-100);
+  padding: 1rem 0.3rem;
+  margin-top: 1rem;
+  border-radius: 0.3rem;
+}
