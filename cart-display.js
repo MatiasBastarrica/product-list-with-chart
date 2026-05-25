@@ -1,6 +1,7 @@
 import { DessertsInfo } from "./desserts.js";
 import { Cart } from "./cart.js";
 import { DessertsDisplay } from "./desserts-display.js";
+import { openDialog, populateList } from "./confirmation-modal.js";
 
 export const CartDisplay = (function () {
   const cartTotal = document.querySelector(".cart-total");
@@ -63,7 +64,15 @@ export const CartDisplay = (function () {
 
     cartList.appendChild(cartItem);
 
-    Cart.addItem(element.name, itemQauntity, itemTotalPrice, cartItem, total);
+    Cart.addItem(
+      element.name,
+      itemQauntity,
+      itemTotalPrice,
+      cartItem,
+      total,
+      element.image.thumbnail,
+      element.price,
+    );
   }
 
   function updateTotal() {
@@ -91,6 +100,12 @@ export const CartDisplay = (function () {
   function toggleEmptyCart() {
     empyCart.classList.toggle("hidden");
   }
+
+  cartConfirmBtn.addEventListener("click", (e) => {
+    console.log("Confirming order...");
+    openDialog();
+    populateList(Cart.getCartItems(), cartTotalNum.textContent);
+  });
 
   return {
     populateCartItem,

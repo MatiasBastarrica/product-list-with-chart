@@ -3,13 +3,23 @@ import { CartDisplay } from "./cart-display.js";
 export const Cart = (function () {
   const cartItems = [];
 
-  function addItem(name, quantity, totalPrice, cartItem, total) {
+  function addItem(
+    name,
+    quantity,
+    totalPrice,
+    cartItem,
+    total,
+    previewImg,
+    price,
+  ) {
     cartItems.push({
       name,
       quantity,
       totalPrice,
       cartItem,
       total,
+      previewImg,
+      price,
     });
   }
 
@@ -46,6 +56,10 @@ export const Cart = (function () {
     }
   }
 
+  function getCartItems() {
+    return cartItems;
+  }
+
   return {
     addItem,
     getItem,
@@ -53,5 +67,6 @@ export const Cart = (function () {
     getTotal,
     updateTotal,
     checkEmptyCart,
+    getCartItems,
   };
 })();
