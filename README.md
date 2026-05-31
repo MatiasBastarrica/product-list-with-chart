@@ -41,7 +41,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [My Solution](https://your-solution-url.com)
+- Solution URL: [My Solution](https://www.frontendmentor.io/solutions/product-list-with-cart-mb-MtKB_bQ_BG)
 - Live Site URL: [Live preview](https://matiasbastarrica.github.io/product-list-with-chart/)
 
 ## My process
