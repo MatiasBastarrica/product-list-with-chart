@@ -1,8 +1,22 @@
+import { DessertsDisplay } from "./desserts-display.js";
+
 export const DessertsInfo = (function () {
   let desserts;
+  let ogDesserts;
 
   function saveDesserts(data) {
     desserts = { ...data };
+  }
+
+  function saveOgDesserts(data) {
+    ogDesserts = data;
+  }
+
+  function reset() {
+    desserts = { ...ogDesserts };
+    DessertsDisplay.resetGrid();
+    const dessertsGrid = document.querySelector(".desserts-grid");
+    DessertsDisplay.populateDessertsGrid(ogDesserts, dessertsGrid);
   }
 
   function setQauntity(dessertIndex, amount) {
@@ -38,6 +52,8 @@ export const DessertsInfo = (function () {
 
   return {
     saveDesserts,
+    saveOgDesserts,
+    reset,
     printDesserts,
     setQauntity,
     increaseQauntity,

@@ -6,8 +6,10 @@ fetch("./data.json")
     return response.json();
   })
   .then((data) => {
-    DessertsDisplay.populateDessertsGrid(data);
+    const dessertsGrid = document.querySelector(".desserts-grid");
+    DessertsDisplay.populateDessertsGrid(data, dessertsGrid);
     DessertsInfo.saveDesserts(data);
+    DessertsInfo.saveOgDesserts(data);
     // DessertsInfo.printDesserts();
   });
 

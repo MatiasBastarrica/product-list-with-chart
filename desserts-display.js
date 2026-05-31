@@ -1,12 +1,11 @@
-// import { jsx } from "react/jsx-runtime";
 import { DessertsInfo } from "./desserts.js";
 import { CartDisplay } from "./cart-display.js";
 import { Cart } from "./cart.js";
 
 export const DessertsDisplay = (function () {
-  const dessertsGrid = document.querySelector(".desserts-grid");
+  // const dessertsGrid = document.querySelector(".desserts-grid");
 
-  function populateDessertsGrid(elements) {
+  function populateDessertsGrid(elements, grid) {
     const breakpoints = {
       mobile: 576,
       tablet: 768,
@@ -154,7 +153,7 @@ export const DessertsDisplay = (function () {
       });
       dessertBody.appendChild(cart);
 
-      dessertsGrid.appendChild(dessertContainer);
+      grid.appendChild(dessertContainer);
     });
   }
 
@@ -163,8 +162,17 @@ export const DessertsDisplay = (function () {
     btnStateOne.classList.add("hidden");
   }
 
+  function resetGrid() {
+    const gridContainer = document.querySelector(".desserts-container");
+    gridContainer.removeChild(gridContainer.children[1]);
+    const newDessertsGrid = document.createElement("div");
+    newDessertsGrid.classList.add("desserts-grid");
+    gridContainer.appendChild(newDessertsGrid);
+  }
+
   return {
     populateDessertsGrid,
     resetBtnState,
+    resetGrid,
   };
 })();

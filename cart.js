@@ -1,7 +1,7 @@
 import { DessertsInfo } from "./desserts.js";
 import { CartDisplay } from "./cart-display.js";
 export const Cart = (function () {
-  const cartItems = [];
+  let cartItems = [];
 
   function addItem(
     name,
@@ -60,6 +60,10 @@ export const Cart = (function () {
     return cartItems;
   }
 
+  function resetCart() {
+    cartItems = [];
+  }
+
   return {
     addItem,
     getItem,
@@ -68,5 +72,6 @@ export const Cart = (function () {
     updateTotal,
     checkEmptyCart,
     getCartItems,
+    resetCart,
   };
 })();

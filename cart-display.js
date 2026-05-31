@@ -101,6 +101,16 @@ export const CartDisplay = (function () {
     empyCart.classList.toggle("hidden");
   }
 
+  function resetCartDisplay() {
+    const listItems = cartList.querySelectorAll("li");
+    listItems.forEach((listItem) => {
+      cartList.removeChild(listItem);
+    });
+    Cart.resetCart();
+    toggleFullCart();
+    toggleEmptyCart();
+  }
+
   cartConfirmBtn.addEventListener("click", (e) => {
     console.log("Confirming order...");
     openDialog();
@@ -114,5 +124,6 @@ export const CartDisplay = (function () {
     updateTotal,
     toggleFullCart,
     toggleEmptyCart,
+    resetCartDisplay,
   };
 })();

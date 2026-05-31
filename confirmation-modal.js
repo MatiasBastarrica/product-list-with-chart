@@ -1,5 +1,11 @@
+import { DessertsDisplay } from "./desserts-display.js";
+import { DessertsInfo } from "./desserts.js";
+import { CartDisplay } from "./cart-display.js";
+import { Cart } from "./cart.js";
+
 const dialog = document.querySelector("dialog");
 const list = document.querySelector(".selected-desserts-list");
+const btn = document.querySelector(".new-order-btn");
 
 export function openDialog() {
   dialog.showModal();
@@ -72,4 +78,10 @@ export function populateList(cartData, totalOrder) {
   totalNum.classList.add("dialog-total-num");
   total.appendChild(totalNum);
   totalNum.textContent = totalOrder;
+
+  btn.addEventListener("click", (e) => {
+    DessertsInfo.reset();
+    CartDisplay.resetCartDisplay();
+    dialog.close();
+  });
 }
