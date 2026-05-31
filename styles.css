@@ -285,6 +285,7 @@ dialog {
   border-radius: 0.8rem;
   width: 50vw;
   border: none;
+  max-width: 500px;
 }
 
 dialog::backdrop {
