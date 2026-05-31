@@ -120,6 +120,7 @@ export const DessertsDisplay = (function () {
           resetBtnState(cartStateZero, cartStateOne);
           Cart.checkEmptyCart();
           CartDisplay.updateTotal();
+          CartDisplay.updateCartNum();
           // CartDisplay.toggleTotal();
         } else {
           DessertsInfo.decreaseQauntity(dessertIndexClicked);

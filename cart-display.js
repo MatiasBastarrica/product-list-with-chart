@@ -6,6 +6,7 @@ import { openDialog, populateList } from "./confirmation-modal.js";
 export const CartDisplay = (function () {
   const cartTotal = document.querySelector(".cart-total");
   const cartTotalNum = document.querySelector(".cart-total-num");
+  const cartNum = document.querySelector(".cart-number");
   const empyCart = document.querySelector(".empty-cart");
   const fullCart = document.querySelector(".full-cart");
   const cartList = document.querySelector(".cart-list");
@@ -53,6 +54,7 @@ export const CartDisplay = (function () {
     cartItem.appendChild(removeIcon);
     removeIcon.addEventListener("click", function (e) {
       removeCartItem(element.name);
+      updateCartNum();
       DessertsDisplay.resetBtnState(
         DessertsInfo.getDessertBtn("btnStateZero", index),
         DessertsInfo.getDessertBtn("btnStateOne", index),
@@ -63,6 +65,7 @@ export const CartDisplay = (function () {
     });
 
     cartList.appendChild(cartItem);
+    updateCartNum();
 
     Cart.addItem(
       element.name,
@@ -77,6 +80,11 @@ export const CartDisplay = (function () {
 
   function updateTotal() {
     cartTotalNum.textContent = `\$${Cart.getTotal()}`;
+  }
+
+  function updateCartNum() {
+    const listNum = cartList.querySelectorAll("li").length;
+    cartNum.textContent = listNum;
   }
 
   function updateCarItem(quantity, currentItem, price) {
@@ -125,5 +133,6 @@ export const CartDisplay = (function () {
     toggleFullCart,
     toggleEmptyCart,
     resetCartDisplay,
+    updateCartNum,
   };
 })();
