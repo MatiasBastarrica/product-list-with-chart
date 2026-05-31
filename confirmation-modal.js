@@ -65,7 +65,7 @@ export function populateList(cartData, totalOrder) {
     listItemContent.appendChild(itemTotalPrice);
   });
 
-  const total = document.createElement("div");
+  const total = document.createElement("li");
   total.classList.add("dialog-total");
   list.appendChild(total);
 
@@ -82,6 +82,14 @@ export function populateList(cartData, totalOrder) {
   btn.addEventListener("click", (e) => {
     DessertsInfo.reset();
     CartDisplay.resetCartDisplay();
+    resetDialogList();
     dialog.close();
+  });
+}
+
+function resetDialogList() {
+  const listItems = list.querySelectorAll("li");
+  listItems.forEach((listItem) => {
+    list.removeChild(listItem);
   });
 }
